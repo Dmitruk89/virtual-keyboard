@@ -73,7 +73,7 @@ for (let j = 0; j < englishLowercase.length; j++){
 
 let keys = document.querySelectorAll('span');
 
-// функция заполнения клавишь символами
+// функция заполнения клавиш символами
 
 function fillKeys (symbols){
     for(let i = 0; i < keys.length; i++){
@@ -89,9 +89,11 @@ let language = JSON.parse(localStorage.getItem(lang));
 
 if (!language){
     fillKeys(englishLowercaseList)
+} else {
+    fillKeys(language);
 }
 
-fillKeys(language);
+
 
 
 
