@@ -87,12 +87,13 @@ let lang
 let languageStorage;
 let language = JSON.parse(localStorage.getItem(lang));
 
-
-fillKeys(language);
-
 if (!language){
     fillKeys(englishLowercaseList)
 }
+
+fillKeys(language);
+
+
 
 
 
