@@ -9,15 +9,12 @@ wrapper.insertAdjacentHTML('beforeend', '<p class="instruction">Переключ
 let keybordArea = document.querySelector('.keybord-area');
 let inputArea = document.querySelector('.input');
 
-let cursorPositionCurrent = inputArea.selectionStart;
-const cursorPositionInit = inputArea.selectionEnd;
-
 
 // массив английской раскладки символов lowercase 
 const englishLowercase = [
     ['§', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '=', '&#8592'],
     ['&#8677', 'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', '[', ']','&#8626'],
-    ['&#8682', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', ';', '\'', '\/'],
+    ['&#8682', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', ';', '\'', '\\'],
     ['&#8679', '`', 'z', 'x', 'c', 'v', 'b', 'n', 'm', ',', '.', '/', '&#8679'],
     ['ctrl', 'alt', 'cmd', ' ', 'cmd', 'alt', '&#9666', '&#9662', '&#9662', '&#9656']
 ];
@@ -25,7 +22,7 @@ const englishLowercase = [
 const englishUppercase = [
     '±', '!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '_', '+', '&#8592',
     '&#8677', 'Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P', '{', '}','&#8626',
-    '&#8682', 'A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', ':', '\"', '\|',
+    '&#8682', 'A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', ':', '"', '|',
     '&#8679', '~', 'Z', 'X', 'C', 'V', 'B', 'N', 'M', '<', '>', '?', '&#8679',
     'ctrl', 'alt', 'cmd', ' ', 'cmd', 'alt', '&#9666', '&#9662', '&#9662', '&#9656'
 ];
@@ -41,7 +38,7 @@ const russianLowercase = [
 const russianUppercase = [
     'Ё', '!', '"', '№', ';', '%', ':', '?', '*', '(', ')', '_', '+', '&#8592',
     '&#8677', 'Й', 'Ц', 'У', 'К', 'Е', 'Н', 'Г', 'Ш', 'Щ', 'З', 'Х', 'Ъ', '&#8626',
-    '&#8682', 'Ф', 'Ы', 'В', 'А', 'П', 'Р', 'О', 'Л', 'Д', 'Ж', 'Э', '\/',
+    '&#8682', 'Ф', 'Ы', 'В', 'А', 'П', 'Р', 'О', 'Л', 'Д', 'Ж', 'Э', '/',
     '&#8679', '[', 'Я', 'Ч', 'С', 'М', 'И', 'Т', 'Ь', 'Б', 'Ю', ',', '&#8679',
     'ctrl', 'alt', 'cmd', ' ', 'cmd', 'alt', '&#9666', '&#9662', '&#9662', '&#9656'
 ];
@@ -237,37 +234,37 @@ function virtualInput(event){
     if (event.target.tagName === 'SPAN' && event.target.classList.contains('functional') === false){
         inputArea.value += event.target.innerHTML
         cursorPosition += 1;
-    };
+    }
 
     if (event.target.classList.contains('enter')) {
         inputArea.value = `${beforeText}\n${afterText}`;
         cursorPosition += 1;
-    };
+    }
 
     if (event.target.classList.contains('tab')) {
         inputArea.value = `${beforeText}\t${afterText}`;
         cursorPosition += 1;
-    };
+    }
 
     if (event.target.classList.contains('arrowUp')) {
         inputArea.value = `${beforeText}\u2191${afterText}`;
         cursorPosition += 1;
-    };
+    }
 
     if (event.target.classList.contains('arrowDown')) {
         inputArea.value = `${beforeText}\u2193${afterText}`;
         cursorPosition += 1;
-    };
+    }
 
     if (event.target.classList.contains('arrowLeft')) {
         inputArea.value = `${beforeText}\u2190${afterText}`;
         cursorPosition += 1;
-    };
+    }
 
     if (event.target.classList.contains('arrowRight')) {
         inputArea.value = `${beforeText}\u2192${afterText}`;
         cursorPosition += 1;
-    };
+    }
 
     if (event.target.classList.contains('backspace')) {
         if (cursorPositionEnd > cursorPosition) {
@@ -275,15 +272,13 @@ function virtualInput(event){
           } else {
             inputArea.value = beforeText.slice(0, -1) + afterText;
             cursorPosition = cursorPosition > 0 ? cursorPosition - 1 : 0;
-          };
-    };
+          }
+    }
 
     inputArea.blur();
     inputArea.focus();
     inputArea.selectionStart = cursorPosition;
     inputArea.selectionEnd = cursorPosition;
-  
-  
 }
 
 keybordArea.addEventListener('mousedown', virtualPress);
@@ -306,7 +301,6 @@ function virtualPress(event) {
                 fillKeys(russianUppercase)
             }
         }
-        
     } else
     if (event.target.classList.contains('shiftLeft') || event.target.classList.contains('shiftRight')){
         event.target.classList.add('key-press');
@@ -321,9 +315,6 @@ function virtualPress(event) {
     if (event.target.tagName === 'SPAN'){
         event.target.classList.add('key-press')
     }
-
-    
-    
 }
 
 keybordArea.addEventListener('mouseup', virtualRelease);
@@ -348,16 +339,3 @@ function virtualRelease(event) {
     }
     
 }
-
-
-
-
-
-
-// реализация переключения раскладки клавиатуры
-
-
-
-
-
-
