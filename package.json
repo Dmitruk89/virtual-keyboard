@@ -1,0 +1,23 @@
+{
+  "name": "virtual-keyboard",
+  "version": "1.0.0",
+  "description": "",
+  "main": "script.js",
+  "dependencies": {
+    "eslint": "^6.8.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Dmitruk89/virtual-keyboard.git"
+  },
+  "author": "Dmitry Rukovichnikov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Dmitruk89/virtual-keyboard/issues"
+  },
+  "homepage": "https://github.com/Dmitruk89/virtual-keyboard#readme"
+}
